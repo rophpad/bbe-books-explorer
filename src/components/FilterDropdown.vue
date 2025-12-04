@@ -48,7 +48,7 @@
           v-for="opt in filteredOptions"
           :key="opt.value"
           @click="select(opt)"
-          class="flex items-center gap-2 px-3 py-2 w-full text-left hover:bg-black/5"
+          class="flex items-center gap-2 px-3 py-2 w-full text-center text-sm hover:bg-black/5"
         >
           <span v-if="opt.icon" class="text-lg">{{ opt.icon }}</span>
           <span class="truncate flex-1 text-black">{{ opt.label }}</span>
