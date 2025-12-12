@@ -2,6 +2,7 @@
 import AppHeader from './components/AppHeader.vue'
 import FilterDropdown from './components/FilterDropdown.vue'
 import BookCard from './components/BookCard.vue'
+import Pagination from './components/Pagination.vue'
 
 import { ref } from 'vue'
 
@@ -14,7 +15,7 @@ const searchQuery = ref<string>('')
 </script>
 
 <template>
-  <div id="app" class="min-h-screen bg-gray-100 border">
+  <div id="app" class="h-full bg-gray-100 border">
     <AppHeader />
     <section
       class="min-h-full bg-linear-to-r from-white to-[#0A5EBE] text-white p-8 md:p-20 pb-32 flex flex-col gap-8 items-center justify-center noise relative"
@@ -53,7 +54,7 @@ const searchQuery = ref<string>('')
             Rechercher
           </button>
         </div>
-        <div class="flex flex-col lg:flex-row gap-4 mt-4">
+        <div class="flex flex-col lg:flex-row gap-4 mt-4 mb-8">
           <FilterDropdown
             v-model="location"
             :options="locations"
@@ -69,21 +70,24 @@ const searchQuery = ref<string>('')
       </div>
 
       <div
-        class="w-5/6 lg:w-2/3 p-8 h-200 mx-auto rounded-md bg-white shadow-md absolute z-10  top-116 lg:top-90 left-1/2 -translate-x-1/2 overflow-y-auto flex flex-wrap items-center justify-center gap-4"
+        class="w-5/6 lg:w-2/3 px-8 py-8 md:py-0 md:h-230 mx-auto rounded-md bg-white shadow-md absolute z-10  top-116 lg:top-90 left-1/2 -translate-x-1/2 overflow-y-auto flex flex-col items-center justify-center no-scrollbar"
       >
-        <BookCard />
-        <BookCard />
-        <BookCard />
-        <BookCard />
-        <BookCard />
-        <BookCard />
-        <BookCard />
-        <BookCard />
-        <BookCard />
+        <div class="py-6 flex flex-wrap items-center justify-center gap-4">
+          <BookCard />
+          <BookCard />
+          <BookCard />
+          <BookCard />
+          <BookCard />
+          <BookCard />
+          <BookCard />
+          <BookCard />
+          <BookCard />
+        </div>
+        <Pagination :total-pages="5" />
       </div>
     </section>
-    <section class="h-216">
-      <!-- Additional content can go here -->
+    <section class="h-580 md:h-224 bg-gray-100 flex items-end  justify-center text-xs p-4">
+      Build by weteko team
     </section>
   </div>
 </template>

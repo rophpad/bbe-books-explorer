@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-max h-max border border-black/10 bg-white rounded-xl p-5 flex flex-col gap-4 shadow-sm"
+    class="w-full h-max md:size-64 border border-black/10 bg-white rounded-xl p-5 flex flex-col gap-4 shadow-sm"
   >
     <!-- Title & Author -->
     <div>
@@ -9,7 +9,7 @@
     </div>
 
     <!-- Description -->
-    <span class="px-3 py-1 rounded-full border border-gray-300 text-xs text-gray-700 bg-gray-50">
+    <span class="w-max px-3 py-1 rounded-full border border-gray-300 text-xs text-gray-700 bg-gray-50">
       Développement personnel
     </span>
 

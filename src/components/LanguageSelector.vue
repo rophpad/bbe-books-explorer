@@ -3,7 +3,7 @@
     <!-- Trigger -->
     <button
       @click="toggle"
-      class="w-30 flex items-center justify-center border border-black/10 px-3 py-2 rounded-full bg-gray-50 text-black/70 cursor-pointer"
+      class="w-30 flex items-center justify-center border border-black/10 px-3 py-2 rounded-full bg-gray-100 hover:bg-linear-to-r from-white to-[#0A5EBE]/50 hover:scale-95 transition noise text-sm text-black/70 cursor-pointer"
     >
       <!-- <span>{{ currentFlag }}</span> -->
       <span class="capitalize">{{ t(`lang.${locale}`) }}</span>
@@ -29,7 +29,7 @@
     <!-- Dropdown -->
     <div
       v-if="open"
-      class="absolute mt-2 w-full bg-white border border-black/10 rounded-md shadow-md overflow-hidden z-50"
+      class="absolute mt-2 w-full bg-gray-100 border border-black/10 rounded-md shadow-md overflow-hidden z-50"
     >
       <button
         v-for="lang in languages"

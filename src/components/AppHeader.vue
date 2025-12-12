@@ -10,10 +10,10 @@ const isOpen = ref(false)
     <img src="/src/assets/images/logo_BE.png" alt="" class="w-12" />
     <div class="hidden md:flex w-full items-center justify-between">
       <div class="flex gap-4">
-        <span class="text-xs p-4 rounded-xl bg-gray-100 hover:bg-linear-to-r from-white to-[#0A5EBE] hover:scale-95 transition noise cursor-pointer"
+        <span class="text-xs p-4 rounded-xl bg-gray-100 hover:bg-linear-to-r from-white to-[#0A5EBE]/50 hover:scale-95 transition noise cursor-pointer"
           >Emplacements des bibliothèques</span
         >
-        <span class="text-xs p-4 rounded-xl bg-gray-100 hover:bg-linear-to-r from-white to-[#0A5EBE] hover:scale-95 transition noise cursor-pointer"
+        <span class="text-xs p-4 rounded-xl bg-gray-100 hover:bg-linear-to-r from-white to-[#0A5EBE]/50 hover:scale-95 transition noise cursor-pointer"
           >Comment prêter un livre ?</span
         >
       </div>
@@ -47,10 +47,10 @@ const isOpen = ref(false)
       class="md:hidden h-screen absolute left-0 right-0 top-full bg-white shadow-md z-30 transition-transform duration-300 overflow-hidden p-8 flex flex-col items-center gap-6"
     >
       <div class="flex flex-col gap-4 ">
-        <span class="text-xs p-4 rounded-xl bg-gray-100 hover:bg-linear-to-r from-white to-[#0A5EBE] cursor-pointer"
+        <span class="text-xs p-4 rounded-xl bg-gray-100 hover:bg-linear-to-r from-white to-[#0A5EBE]/50 hover:scale-95 transition noise cursor-pointer"
           >Emplacements des bibliothèques</span
         >
-        <span class="text-xs p-4 rounded-xl bg-gray-100 hover:bg-linear-to-r from-white to-[#0A5EBE] cursor-pointer"
+        <span class="text-xs p-4 rounded-xl bg-gray-100 hover:bg-linear-to-r from-white to-[#0A5EBE]/50 hover:scale-95 transition noise cursor-pointer"
           >Comment prêter un livre ?</span
         >
       </div>
