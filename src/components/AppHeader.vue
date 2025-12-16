@@ -1,7 +1,13 @@
 <script setup lang="ts">
 import LanguageSelector from './LanguageSelector.vue'
 import { ref } from 'vue'
+import { useModalStore } from '@/stores/modal'
 
+const modal = useModalStore()
+
+const openProfileModal = () => {
+  modal.open('ProfileForm', { userId: 12345 })
+}
 const isOpen = ref(false)
 </script>
 
@@ -10,10 +16,13 @@ const isOpen = ref(false)
     <img src="/src/assets/images/logo_BE.png" alt="" class="w-12" />
     <div class="hidden md:flex w-full items-center justify-between">
       <div class="flex gap-4">
-        <span class="text-xs p-4 rounded-xl bg-gray-100 hover:bg-linear-to-r from-white to-[#0A5EBE]/50 hover:scale-95 transition noise cursor-pointer"
-          >Emplacements des bibliothèques</span
-        >
-        <span class="text-xs p-4 rounded-xl bg-gray-100 hover:bg-linear-to-r from-white to-[#0A5EBE]/50 hover:scale-95 transition noise cursor-pointer"
+        <span
+          class="text-xs p-4 rounded-xl bg-gray-100 hover:bg-linear-to-r from-white to-[#0A5EBE]/50 hover:scale-95 transition noise cursor-pointer"
+          @click="openProfileModal()"
+          >Emplacements des bibliothèques
+        </span>
+        <span
+          class="text-xs p-4 rounded-xl bg-gray-100 hover:bg-linear-to-r from-white to-[#0A5EBE]/50 hover:scale-95 transition noise cursor-pointer"
           >Comment prêter un livre ?</span
         >
       </div>
@@ -46,11 +55,14 @@ const isOpen = ref(false)
       v-if="isOpen"
       class="md:hidden h-screen absolute left-0 right-0 top-full bg-white shadow-md z-30 transition-transform duration-300 overflow-hidden p-8 flex flex-col items-center gap-6"
     >
-      <div class="flex flex-col gap-4 ">
-        <span class="text-xs p-4 rounded-xl bg-gray-100 hover:bg-linear-to-r from-white to-[#0A5EBE]/50 hover:scale-95 transition noise cursor-pointer"
+      <div class="flex flex-col gap-4">
+        <span
+          class="text-xs p-4 rounded-xl bg-gray-100 hover:bg-linear-to-r from-white to-[#0A5EBE]/50 hover:scale-95 transition noise cursor-pointer"
+          @click="openProfileModal()"
           >Emplacements des bibliothèques</span
         >
-        <span class="text-xs p-4 rounded-xl bg-gray-100 hover:bg-linear-to-r from-white to-[#0A5EBE]/50 hover:scale-95 transition noise cursor-pointer"
+        <span
+          class="text-xs p-4 rounded-xl bg-gray-100 hover:bg-linear-to-r from-white to-[#0A5EBE]/50 hover:scale-95 transition noise cursor-pointer"
           >Comment prêter un livre ?</span
         >
       </div>

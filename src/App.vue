@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ModalRoot from './components/ModalRoot.vue'
 import AppHeader from './components/AppHeader.vue'
 import FilterDropdown from './components/FilterDropdown.vue'
 import BookCard from './components/BookCard.vue'
@@ -15,6 +16,7 @@ const searchQuery = ref<string>('')
 </script>
 
 <template>
+  <ModalRoot />
   <div id="app" class="h-full bg-gray-100 border">
     <AppHeader />
     <section
@@ -70,7 +72,7 @@ const searchQuery = ref<string>('')
       </div>
 
       <div
-        class="w-5/6 lg:w-2/3 px-8 py-8 md:py-0 md:h-230 mx-auto rounded-md bg-white shadow-md absolute z-10  top-116 lg:top-90 left-1/2 -translate-x-1/2 overflow-y-auto flex flex-col items-center justify-center no-scrollbar"
+        class="w-5/6 lg:w-2/3 px-8 py-8 md:py-0 md:h-230 mx-auto rounded-md bg-white shadow-md absolute z-10 top-116 lg:top-90 left-1/2 -translate-x-1/2 overflow-y-auto flex flex-col items-center justify-center no-scrollbar"
       >
         <div class="py-6 flex flex-wrap items-center justify-center gap-4">
           <BookCard />
@@ -86,7 +88,7 @@ const searchQuery = ref<string>('')
         <Pagination :total-pages="100" />
       </div>
     </section>
-    <section class="h-580 md:h-224 bg-gray-100 flex items-end  justify-center text-xs p-4">
+    <section class="h-580 md:h-224 bg-gray-100 flex items-end justify-center text-xs p-4">
       Build by weteko team
     </section>
   </div>
