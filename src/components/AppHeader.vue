@@ -16,7 +16,7 @@ const isOpen = ref(false)
     <img src="/src/assets/images/logo_BE.png" alt="" class="w-12" />
     <div class="hidden md:flex w-full items-center justify-between">
       <div class="flex gap-4">
-        <span
+        <!-- <span
           class="text-xs p-4 rounded-xl bg-gray-100 hover:bg-linear-to-r from-white to-[#0A5EBE]/50 hover:scale-95 transition noise cursor-pointer"
           @click="() => modal.open('LibraryLocation')"
           >Emplacements des bibliothèques
@@ -25,9 +25,16 @@ const isOpen = ref(false)
           class="text-xs p-4 rounded-xl bg-gray-100 hover:bg-linear-to-r from-white to-[#0A5EBE]/50 hover:scale-95 transition noise cursor-pointer"
           @click="() => modal.open('BorrowBooks')"
           >Comment prêter un livre ?</span
-        >
+        > -->
       </div>
-      <LanguageSelector />
+      <!-- <LanguageSelector /> -->
+       <span
+          class="text-xs p-4 rounded-xl bg-gray-100 hover:bg-linear-to-r from-white to-[#0A5EBE]/50 hover:scale-95 transition noise cursor-pointer"
+          @click="() => modal.open('BorrowBooks')"
+          >
+          Ajouter une bibliothèque
+          </span
+        >
     </div>
 
     <!-- Mobile hamburger -->

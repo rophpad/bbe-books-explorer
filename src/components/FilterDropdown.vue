@@ -3,7 +3,7 @@
     <!-- Trigger -->
     <button
       @click="toggle"
-      class="w-full flex items-center justify-between border border-black/10 px-3 py-2 rounded-full bg-gray-50 text-black/70 cursor-pointer"
+      class="text-sm w-full flex items-center justify-between border border-black/10 px-3 py-2 rounded-full bg-gray-50 text-black/70 cursor-pointer"
       :aria-expanded="open"
       type="button"
     >
@@ -33,7 +33,7 @@
     <!-- Dropdown -->
     <div
       v-if="open"
-      class="absolute mt-2 w-full bg-white border border-black/10 rounded-md shadow-md overflow-hidden z-50"
+      class="p-2 absolute mt-2 w-full bg-white border border-black/10 rounded-md shadow-md overflow-hidden z-10"
     >
       <div v-if="searchable" class="px-3 py-2 border-b border-black/5">
         <input
@@ -48,7 +48,7 @@
           v-for="opt in filteredOptions"
           :key="opt.value"
           @click="select(opt)"
-          class="flex items-center gap-2 px-3 py-2 w-full text-left text-sm hover:bg-black/5"
+          class="rounded-md flex items-center gap-2 px-3 py-2 w-full text-left text-sm hover:bg-black/5"
         >
           <span v-if="opt.icon" class="text-lg">{{ opt.icon }}</span>
           <span class="truncate flex-1 text-black">{{ opt.label }}</span>
