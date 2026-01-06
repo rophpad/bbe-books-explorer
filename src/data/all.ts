@@ -20,4 +20,3 @@ export const statuses = [
   { value: 'new', label: 'Nouveau' },
   { value: 'borrowable', label: 'Empruntable' },
 ]
-
