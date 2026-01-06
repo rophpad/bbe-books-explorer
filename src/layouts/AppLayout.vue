@@ -14,7 +14,7 @@ const searchQuery = ref<string>('')
 <template>
   <div class="h-full bg-gray-100">
     <section
-      class="min-h-full bg-linear-to-r from-white to-[#0A5EBE] text-white p-8 md:pb-30 flex flex-col gap-4 items-center justify-center noise relative"
+      class="bg-linear-to-r from-white to-[#0A5EBE] text-white p-8 md:pb-30 flex flex-col gap-4 items-center justify-center noise relative"
     >
       <a
         href="https://github.com"
@@ -26,13 +26,13 @@ const searchQuery = ref<string>('')
       </a>
       <h1 class="text-center text-2xl md:text-4xl font-bold">
         Explorez depuis n’importe où <br />
-        les livres de votre bibliothèque !
+        les livres de vos bibliothèques !
       </h1>
-      <div class="h-12 w-56">
-        <img src="/books-bw.png" alt="books" class="object-cover" />
+      <div class="h- w-96">
+        <img src="/vector1.png" alt="books" class="object-cover" />
       </div>
       <div
-        class="w-full md:w-1/2 absolute z-99 top-64 bg-white p-4 rounded-xl flex flex-col items-center justify-center"
+        class="w-full md:w-1/2 absolute z-99 top-70 lg:top-72 bg-gray-100 p-4 rounded-xl flex flex-col items-center justify-center"
       >
         <div class="w-full relative">
           <svg
@@ -54,7 +54,7 @@ const searchQuery = ref<string>('')
           <input
             type="search"
             placeholder="Rechercher un livre, un auteur, un sujet..."
-            class="border border-black/20 bg-white w-full pl-16 p-6 rounded-md text-black outline-none focus:ring-2 focus:ring-[#0A5EBE] transition"
+            class="border border-black/20 bg-white/50 w-full pl-16 p-6 rounded-md text-black outline-none focus:ring-2 focus:ring-[#0A5EBE] transition"
             v-model="searchQuery"
           />
           <button
@@ -78,7 +78,7 @@ const searchQuery = ref<string>('')
         </div>
       </div>
     </section>
-    <section class="pt-24 bg-gray-100 flex flex-col items-center justify-center">
+    <section class="pt-72 md:pt-48 lg:pt-24 bg-white flex flex-col items-center justify-center">
       <RouterView />
     </section>
   </div>
