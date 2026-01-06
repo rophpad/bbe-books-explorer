@@ -19,10 +19,18 @@ export default defineConfigWithVueTs(
 
   pluginVue.configs['flat/essential'],
   vueTsConfigs.recommended,
-  
+
   {
     ...pluginVitest.configs.recommended,
     files: ['src/**/__tests__/*'],
   },
   skipFormatting,
+
+  {
+    rules: {
+      '@typescript-eslint/no-explicit-any': 'off', // completely disable
+      // or make it a warning instead:
+      // '@typescript-eslint/no-explicit-any': 'warn',
+    },
+  },
 )

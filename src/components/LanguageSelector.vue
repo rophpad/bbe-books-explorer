@@ -45,7 +45,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 
 /*
   Minimal local i18n shim to avoid requiring the 'vue-i18n' package.
@@ -71,9 +71,9 @@ const languages = [
   { code: 'en', flag: '🇬🇧' },
 ]
 
-const currentFlag = computed(() => {
-  return languages.find((l) => l.code === locale.value)?.flag || '🌐'
-})
+// const currentFlag = computed(() => {
+//   return languages.find((l) => l.code === locale.value)?.flag || '🌐'
+// })
 
 function toggle() {
   open.value = !open.value

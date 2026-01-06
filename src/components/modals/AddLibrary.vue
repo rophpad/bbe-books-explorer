@@ -61,7 +61,7 @@
       <li>Le contact de la bibliothèque</li>
       <li>La liste des livres au format CSV</li>
     </ul>
-    <p class="w-full ">NB: La liste des livres doit être au format:</p>
+    <p class="w-full">NB: La liste des livres doit être au format:</p>
     <p>Nom du livre | Auteur | Catégorie | Status(Empruntable/Nouveau)</p>
     <p>
       Nous nous chargerons d'ajouter votre bibliothèque à la plateforme dans les plus brefs délais.

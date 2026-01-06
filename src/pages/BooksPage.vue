@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import BookCard from '../components/BookCard.vue'
-import Pagination from '../components/Pagination.vue'
+import APagination from '../components/APagination.vue'
 </script>
 
 <template>
@@ -22,6 +22,6 @@ import Pagination from '../components/Pagination.vue'
       <BookCard />
       <BookCard />
     </div>
-    <Pagination :total-pages="100" />
+    <APagination :total-pages="100" />
   </div>
 </template>

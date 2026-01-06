@@ -9,7 +9,9 @@
     </div>
 
     <!-- Description -->
-    <span class="w-max px-3 py-1 rounded-full border border-gray-300 text-xs text-gray-700 bg-gray-50">
+    <span
+      class="w-max px-3 py-1 rounded-full border border-gray-300 text-xs text-gray-700 bg-gray-50"
+    >
       Développement personnel
     </span>
 
