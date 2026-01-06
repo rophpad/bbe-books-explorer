@@ -83,12 +83,18 @@ const displayBooksOnly = ref<boolean>(false)
         </div>
       </div>
       <!-- <LanguageSelector /> -->
-      <span
+      <!-- <span
         class="text-xs p-4 rounded-xl bg-gray-100 hover:bg-linear-to-r from-white to-[#0A5EBE]/50 hover:scale-95 transition noise cursor-pointer"
-        @click="() => modal.open('BorrowBooks')"
+        @click="() => modal.open('AddLibrary')"
       >
         Ajouter une bibliothèque
-      </span>
+      </span> -->
+      <a
+        href="mailto:contact@votresite.com?subject=Demande%20d'ajout%20de%20bibliothèque&body=Bonjour,%0A%0AJe%20souhaiterais%20ajouter%20ma%20bibliothèque%20à%20votre%20plateforme.%20Voici%20les%20informations%20nécessaires%20:%0A%0ANom%20de%20la%20bibliothèque%20:%0AAdresse%20:%0AContact%20:%0A%0AMerci%20d'avance.%0A"
+        class="text-xs p-4 rounded-xl bg- hover:bg-linear-to-r from-white to-[#0A5EBE]/50 hover:scale-95 transition noise cursor-pointer"
+      >
+        Ajouter votre bibliothèque
+      </a>
     </div>
 
     <!-- Mobile hamburger -->
