@@ -28,6 +28,11 @@ const router = createRouter({
           name: 'LibraryPage',
           component: () => import('../pages/LibraryPage.vue'),
         },
+        {
+          path: '/recherche',
+          name: 'SearchResultsPage',
+          component: () => import('../pages/SearchResultsPage.vue'),
+        },
       ],
     },
   ],

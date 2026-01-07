@@ -9,18 +9,62 @@ import APagination from '../components/APagination.vue'
   >
     <p class="text-2xl font-bold">Tous les livres</p>
     <div class="w-full grid grid-cols-1 lg:grid-cols-4 items-center justify-center gap-4">
-      <BookCard />
-      <BookCard />
-      <BookCard />
-      <BookCard />
-      <BookCard />
-      <BookCard />
-      <BookCard />
-      <BookCard />
-      <BookCard />
-      <BookCard />
-      <BookCard />
-      <BookCard />
+      <BookCard
+        title="Sample Book"
+        author="Author Name"
+        category="Fiction"
+        :locations="['Location 1']"
+        status="Available"
+      />
+      <BookCard
+        title="Sample Book"
+        author="Author Name"
+        category="Fiction"
+        :locations="['Location 1']"
+        status="Available"
+      />
+      <BookCard
+        title="Sample Book"
+        author="Author Name"
+        category="Fiction"
+        :locations="['Location 1']"
+        status="Available"
+      />
+      <BookCard
+        title="Sample Book"
+        author="Author Name"
+        category="Fiction"
+        :locations="['Location 1']"
+        status="Available"
+      />
+      <BookCard
+        title="Sample Book"
+        author="Author Name"
+        category="Fiction"
+        :locations="['Location 1']"
+        status="Available"
+      />
+      <BookCard
+        title="Sample Book"
+        author="Author Name"
+        category="Fiction"
+        :locations="['Location 1']"
+        status="Available"
+      />
+      <BookCard
+        title="Sample Book"
+        author="Author Name"
+        category="Fiction"
+        :locations="['Location 1']"
+        status="Available"
+      />
+      <BookCard
+        title="Sample Book"
+        author="Author Name"
+        category="Fiction"
+        :locations="['Location 1']"
+        status="Available"
+      />
     </div>
     <APagination :total-pages="100" />
   </div>

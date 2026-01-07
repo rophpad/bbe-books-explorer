@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useModalStore } from '@/stores/modal'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 
 const modal = useModalStore()
 const router = useRouter()
+const route = useRoute()
 
 const isOpen = ref(false)
-const displayBooksOnly = ref<boolean>(false)
+const isCurrentPath = (path: string) => route.path === path
 </script>
 
 <template>
@@ -28,10 +29,8 @@ const displayBooksOnly = ref<boolean>(false)
         <div class="w-full flex items-center gap-2">
           <div
             class="w-max text-sm py-2 px-4 border border-black/20 rounded-full flex items-center gap-2 cursor-pointer hover:bg-black/5 transition"
-            :class="displayBooksOnly ? '' : 'bg-[#]  '"
             @click="
               () => {
-                displayBooksOnly = false
                 router.push('/bibliotheques')
               }
             "
@@ -43,7 +42,7 @@ const displayBooksOnly = ref<boolean>(false)
               height="32"
               viewBox="0 0 24 24"
               class="size-4 fill-black/20"
-              v-if="!displayBooksOnly"
+              v-if="isCurrentPath('/bibliotheques')"
             >
               <path
                 fill=""
@@ -53,10 +52,8 @@ const displayBooksOnly = ref<boolean>(false)
           </div>
           <div
             class="w-max text-sm py-2 px-4 border border-black/20 rounded-full flex items-center gap-2 cursor-pointer hover:bg-black/5 transition"
-            :class="displayBooksOnly ? 'bg-[#] ' : ''"
             @click="
               () => {
-                displayBooksOnly = true
                 router.push('/livres')
               }
             "
@@ -68,7 +65,31 @@ const displayBooksOnly = ref<boolean>(false)
               height="32"
               viewBox="0 0 24 24"
               class="size-4 fill-black/20"
-              v-if="displayBooksOnly"
+              v-if="isCurrentPath('/livres')"
+            >
+              <path
+                fill=""
+                d="m10 13.6l5.9-5.9q.275-.275.7-.275t.7.275t.275.7t-.275.7l-6.6 6.6q-.3.3-.7.3t-.7-.3l-2.6-2.6q-.275-.275-.275-.7t.275-.7t.7-.275t.7.275z"
+              />
+            </svg>
+          </div>
+
+          <div
+            class="w-max text-sm py-2 px-4 border border-black/20 rounded-full flex items-center gap-2 cursor-pointer hover:bg-black/5 transition"
+            @click="
+              () => {
+                router.push('/recherche')
+              }
+            "
+          >
+            <p>Recherche</p>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 24 24"
+              class="size-4 fill-black/20"
+              v-if="isCurrentPath('/recherche')"
             >
               <path
                 fill=""
@@ -122,10 +143,8 @@ const displayBooksOnly = ref<boolean>(false)
       <div class="w-full flex-col items-center space-y-4">
         <div
           class="w-max text-sm py-2 px-4 border border-black/20 rounded-full flex items-center gap-2 cursor-pointer hover:bg-black/5 transition"
-          :class="displayBooksOnly ? '' : 'bg-[#]  '"
           @click="
             () => {
-              displayBooksOnly = false
               router.push('/bibliotheques')
             }
           "
@@ -137,7 +156,7 @@ const displayBooksOnly = ref<boolean>(false)
             height="32"
             viewBox="0 0 24 24"
             class="size-4 fill-black/20"
-            v-if="!displayBooksOnly"
+            v-if="isCurrentPath('/bibliotheques')"
           >
             <path
               fill=""
@@ -147,10 +166,8 @@ const displayBooksOnly = ref<boolean>(false)
         </div>
         <div
           class="w-max text-sm py-2 px-4 border border-black/20 rounded-full flex items-center gap-2 cursor-pointer hover:bg-black/5 transition"
-          :class="displayBooksOnly ? 'bg-[#] ' : ''"
           @click="
             () => {
-              displayBooksOnly = true
               router.push('/livres')
             }
           "
@@ -162,7 +179,31 @@ const displayBooksOnly = ref<boolean>(false)
             height="32"
             viewBox="0 0 24 24"
             class="size-4 fill-black/20"
-            v-if="displayBooksOnly"
+            v-if="isCurrentPath('/livres')"
+          >
+            <path
+              fill=""
+              d="m10 13.6l5.9-5.9q.275-.275.7-.275t.7.275t.275.7t-.275.7l-6.6 6.6q-.3.3-.7.3t-.7-.3l-2.6-2.6q-.275-.275-.275-.7t.275-.7t.7-.275t.7.275z"
+            />
+          </svg>
+        </div>
+
+        <div
+          class="w-max text-sm py-2 px-4 border border-black/20 rounded-full flex items-center gap-2 cursor-pointer hover:bg-black/5 transition"
+          @click="
+            () => {
+              router.push('/recherche')
+            }
+          "
+        >
+          <p>Recherche</p>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            class="size-4 fill-black/20"
+            v-if="isCurrentPath('/recherche')"
           >
             <path
               fill=""

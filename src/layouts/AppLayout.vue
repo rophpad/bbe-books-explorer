@@ -1,14 +1,45 @@
 <script setup lang="ts">
 import FilterDropdown from '../components/FilterDropdown.vue'
-
-import { ref } from 'vue'
+import { useRouter, useRoute } from 'vue-router'
+import { useSearchStore } from '@/stores/search'
+import { watch } from 'vue'
 
 import { locations, categories, statuses } from '../data/all'
 
-const category = ref<string>('all')
-const location = ref<string>('all')
-const bookStatus = ref<string>('all')
-const searchQuery = ref<string>('')
+const router = useRouter()
+const route = useRoute()
+const searchStore = useSearchStore()
+
+function handleSearch() {
+  searchStore.setPage(1)
+  router.push({
+    name: 'SearchResultsPage',
+    query: {
+      q: searchStore.searchQuery || undefined,
+      location: searchStore.selectedLocation !== 'all' ? searchStore.selectedLocation : undefined,
+      category: searchStore.selectedCategory !== 'all' ? searchStore.selectedCategory : undefined,
+      status: searchStore.selectedStatus !== 'all' ? searchStore.selectedStatus : undefined,
+    },
+  })
+}
+
+// Auto-navigate to search page when filters change (except when already on search page)
+watch(
+  () => [searchStore.selectedLocation, searchStore.selectedCategory, searchStore.selectedStatus],
+  () => {
+    // Only auto-navigate if not on search results page and if there's a filter applied
+    if (route.name !== 'SearchResultsPage') {
+      const hasActiveFilter =
+        searchStore.selectedLocation !== 'all' ||
+        searchStore.selectedCategory !== 'all' ||
+        searchStore.selectedStatus !== 'all'
+
+      if (hasActiveFilter) {
+        handleSearch()
+      }
+    }
+  },
+)
 </script>
 
 <template>
@@ -28,7 +59,7 @@ const searchQuery = ref<string>('')
         Explorez depuis n’importe où <br class="hidden md:block" />
         les livres de vos bibliothèques !
       </h1>
-      <div class="h-  lg:w-96">
+      <div class="h- lg:w-96">
         <img src="/vector1.png" alt="books" class="object-cover" />
       </div>
       <div
@@ -55,28 +86,35 @@ const searchQuery = ref<string>('')
             type="search"
             placeholder="Rechercher un livre, un auteur, un sujet..."
             class="border border-black/20 bg-white/50 w-full pl-16 p-6 rounded-md text-black outline-none focus:ring-2 focus:ring-[#0A5EBE] transition"
-            v-model="searchQuery"
+            v-model="searchStore.searchQuery"
+            @keyup.enter="handleSearch"
           />
           <button
-            :class="`${searchQuery ? 'bg-[#0A5EBE]' : 'bg-[#0A5EBE]'} hidden md:block text-white text-sm px-4 py-3 rounded-full absolute top-1/2 right-4 transform -translate-y-1/2 shadow-md hover:scale-95 transition cursor-pointer`"
+            :class="`${searchStore.searchQuery ? 'bg-[#0A5EBE]' : 'bg-[#0A5EBE]'} hidden md:block text-white text-sm px-4 py-3 rounded-full absolute top-1/2 right-4 transform -translate-y-1/2 shadow-md hover:scale-95 transition cursor-pointer`"
+            @click="handleSearch"
           >
             Rechercher
           </button>
         </div>
         <div class="w-full flex flex-col lg:flex-row gap-4 mt-4">
           <FilterDropdown
-            v-model="location"
+            v-model="searchStore.selectedLocation"
             :options="locations"
             placeholder="Toutes les bibliothèques"
           />
           <FilterDropdown
-            v-model="category"
+            v-model="searchStore.selectedCategory"
             :options="categories"
             placeholder="Toutes les catégories"
           />
-          <FilterDropdown v-model="bookStatus" :options="statuses" placeholder="Tous les statuts" />
+          <FilterDropdown
+            v-model="searchStore.selectedStatus"
+            :options="statuses"
+            placeholder="Tous les statuts"
+          />
           <button
-            :class="`${searchQuery ? 'bg-[#0A5EBE]' : 'bg-[#0A5EBE]'} md:hidden text-white text-sm px-4 py-3 rounded-full shadow-md hover:scale-95 transition cursor-pointer`"
+            :class="`${searchStore.searchQuery ? 'bg-[#0A5EBE]' : 'bg-[#0A5EBE]'} md:hidden text-white text-sm px-4 py-3 rounded-full shadow-md hover:scale-95 transition cursor-pointer`"
+            @click="handleSearch"
           >
             Rechercher
           </button>
@@ -85,16 +123,6 @@ const searchQuery = ref<string>('')
     </section>
     <section class="pt-80 md:pt-48 lg:pt-24 bg-white flex flex-col items-center justify-center">
       <RouterView />
-
-      <p class="font-semibold text-xl">
-        <span v-if="searchQuery || location !== 'all' || category !== 'all' || bookStatus !== 'all'"
-          >Résultats de recherche pour
-        </span>
-        <span v-if="searchQuery">livre: <<{{ searchQuery }}>>,</span>
-        <span v-if="location !== 'all'"> bibliothèque: <<{{ location }}>>,</span>
-        <span v-if="category !== 'all'"> catégorie: <<{{ category }}>></span>
-        <span v-if="bookStatus !== 'all'">, statut: <<{{ bookStatus }}>></span>
-      </p>
     </section>
   </div>
 </template>

@@ -28,10 +28,10 @@ import BookCard from '../components/BookCard.vue'
         </RouterLink>
       </div>
       <div class="w-full grid grid-cols-1 lg:grid-cols-4 items-center justify-center gap-4">
-        <BookCard />
-        <BookCard />
-        <BookCard />
-        <BookCard />
+        <BookCard title="Book Title 1" author="Author Name" category="Fiction" :locations="['Location 1']" status="Available" />
+        <BookCard title="Book Title 2" author="Author Name" category="Fiction" :locations="['Location 1']" status="Available" />
+        <BookCard title="Book Title 3" author="Author Name" category="Fiction" :locations="['Location 1']" status="Available" />
+        <BookCard title="Book Title 4" author="Author Name" category="Fiction" :locations="['Location 1']" status="Available" />
       </div>
     </div>
   </div>
