@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
+import { Libraries } from '@/data/libraries'
+import { useSearchStore } from '@/stores/search'
+const searchStore = useSearchStore()
 </script>
 
 <template>
@@ -30,7 +33,7 @@ import { RouterLink } from 'vue-router'
             d="M3 16h18M2 22h20M3 9h18M3 22V8c0-2.828 0-4.243.93-5.121S6.358 2 9.353 2h5.294c2.995 0 4.492 0 5.423.879C21 3.757 21 5.172 21 8v14m-10-3h2M10 9L9 5M6.5 9V5M14 16v-4m-2-3V5m4 11l1-4m2 4v-4"
           />
         </svg>
-        <p class="text-center">Découvrez les bibliothèques</p>
+        <p class="text-center">Découvrez <span class="font-bold">{{ Libraries.length }}</span> bibliothèques</p>
       </RouterLink>
       <RouterLink
         to="/livres"
@@ -48,7 +51,10 @@ import { RouterLink } from 'vue-router'
             d="M7.333 5.5a2.25 2.25 0 0 1 2.25-2.25h1.583a2.25 2.25 0 0 1 2.25 2.196c.227-.175.492-.308.786-.387l2.253-.604a2.25 2.25 0 0 1 2.756 1.591L21.93 16.19a2.25 2.25 0 0 1-1.591 2.755l-2.254.604a2.25 2.25 0 0 1-2.756-1.59l-1.912-7.136v6.428a2.25 2.25 0 0 1-2.25 2.25H9.583a2.24 2.24 0 0 1-1.5-.573a2.24 2.24 0 0 1-1.5.573H4.25A2.25 2.25 0 0 1 2 17.25v-9.5A2.25 2.25 0 0 1 4.25 5.5h2.333c.263 0 .516.045.75.128zm0 11.75V7.728A.75.75 0 0 0 6.583 7H4.25a.75.75 0 0 0-.75.75v9.5c0 .414.336.75.75.75h2.333a.75.75 0 0 0 .75-.73zm2.25.75h1.583a.75.75 0 0 0 .75-.75V5.5a.75.75 0 0 0-.75-.75H9.583a.75.75 0 0 0-.75.75v11.77a.75.75 0 0 0 .75.73M14.06 7.427l2.717 10.142a.75.75 0 0 0 .919.53l2.253-.604a.75.75 0 0 0 .53-.918L17.763 6.435a.75.75 0 0 0-.918-.53l-2.254.603a.75.75 0 0 0-.53.919"
           />
         </svg>
-        <p class="text-center">Explorez les livres disponibles</p>
+        <p class="text-center">
+          Explorez parmi <span class="font-bold">{{ searchStore.allBooks.length }}</span> livres
+          disponibles
+        </p>
       </RouterLink>
       <RouterLink
         to="/recherche"
