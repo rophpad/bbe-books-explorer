@@ -1,16 +1,17 @@
 <script setup lang="ts">
 import BookCard from '../components/BookCard.vue'
+import { Libraries } from '@/data/libraries'
 </script>
 
 <template>
   <div
     class="w-full px-3 lg:w-6xl py-6 flex flex-col items-center justify-center gap-4 no-scrollbar overflow-y-auto"
   >
-    <div class="w-full flex flex-col gap-4">
+    <div v-for="library in Libraries" :key="library.id" class="w-full flex flex-col gap-4">
       <div class="flex items-center justify-between py-2 border-b border-black/20">
-        <p class="font-bold text-xl">Bibliothèque de Calavi</p>
+        <p class="font-bold text-xl">{{ library.name }}</p>
         <RouterLink
-          to="/bibliotheque/2"
+          :to="`/bibliotheque/${library.id}`"
           class="p-2 border border-black/20 flex items-center justify-center rounded-full cursor-pointer hover:bg-black/5 transition"
         >
           <svg
@@ -28,10 +29,15 @@ import BookCard from '../components/BookCard.vue'
         </RouterLink>
       </div>
       <div class="w-full grid grid-cols-1 lg:grid-cols-4 items-center justify-center gap-4">
-        <BookCard title="Book Title 1" author="Author Name" category="Fiction" :locations="['Location 1']" status="Available" />
-        <BookCard title="Book Title 2" author="Author Name" category="Fiction" :locations="['Location 1']" status="Available" />
-        <BookCard title="Book Title 3" author="Author Name" category="Fiction" :locations="['Location 1']" status="Available" />
-        <BookCard title="Book Title 4" author="Author Name" category="Fiction" :locations="['Location 1']" status="Available" />
+        <BookCard
+          v-for="book in library.books.slice(0, 4)"
+          :key="book.id"
+          :title="book.title"
+          :author="book.author"
+          :category="book.category"
+          :locations="book.locations"
+          :status="book.status"
+        />
       </div>
     </div>
   </div>

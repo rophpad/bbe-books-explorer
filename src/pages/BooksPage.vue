@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import BookCard from '../components/BookCard.vue'
 import APagination from '../components/APagination.vue'
+import { useSearchStore } from '@/stores/search'
+const searchStore = useSearchStore()
 </script>
 
 <template>
@@ -10,62 +12,15 @@ import APagination from '../components/APagination.vue'
     <p class="text-2xl font-bold">Tous les livres</p>
     <div class="w-full grid grid-cols-1 lg:grid-cols-4 items-center justify-center gap-4">
       <BookCard
-        title="Sample Book"
-        author="Author Name"
-        category="Fiction"
-        :locations="['Location 1']"
-        status="Available"
-      />
-      <BookCard
-        title="Sample Book"
-        author="Author Name"
-        category="Fiction"
-        :locations="['Location 1']"
-        status="Available"
-      />
-      <BookCard
-        title="Sample Book"
-        author="Author Name"
-        category="Fiction"
-        :locations="['Location 1']"
-        status="Available"
-      />
-      <BookCard
-        title="Sample Book"
-        author="Author Name"
-        category="Fiction"
-        :locations="['Location 1']"
-        status="Available"
-      />
-      <BookCard
-        title="Sample Book"
-        author="Author Name"
-        category="Fiction"
-        :locations="['Location 1']"
-        status="Available"
-      />
-      <BookCard
-        title="Sample Book"
-        author="Author Name"
-        category="Fiction"
-        :locations="['Location 1']"
-        status="Available"
-      />
-      <BookCard
-        title="Sample Book"
-        author="Author Name"
-        category="Fiction"
-        :locations="['Location 1']"
-        status="Available"
-      />
-      <BookCard
-        title="Sample Book"
-        author="Author Name"
-        category="Fiction"
-        :locations="['Location 1']"
-        status="Available"
+        v-for="book in searchStore.paginatedBooks"
+        :key="book.id"
+        :title="book.title"
+        :author="book.author"
+        :category="book.category"
+        :locations="book.locations"
+        :status="book.status"
       />
     </div>
-    <APagination :total-pages="100" />
+    <APagination :total-pages="searchStore.totalPages" />
   </div>
 </template>

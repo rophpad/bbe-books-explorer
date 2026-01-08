@@ -1,6 +1,14 @@
 <script setup lang="ts">
 import BookCard from '../components/BookCard.vue'
-import APagination from '../components/APagination.vue'
+// import APagination from '../components/APagination.vue'
+import { Libraries } from '@/data/libraries'
+import { useRoute, useRouter } from 'vue-router'
+import type { Library } from '@/types/lib'
+const route = useRoute()
+const libraryId = route.params.id
+const library: Library = (Libraries.find((lib) => lib.id === libraryId) as Library) || Libraries[0]
+
+const router = useRouter()
 </script>
 
 <template>
@@ -9,9 +17,14 @@ import APagination from '../components/APagination.vue'
   >
     <div class="w-full flex flex-col items-center justify-center gap-4">
       <div class="w-full flex items-center justify-between py-2 border-b border-black/20">
-        <p class="font-bold text-xl">Bibliothèque de Calavi</p>
+        <p class="font-bold text-xl">{{ library.name }}</p>
         <div
           class="p-2 border border-black/20 flex items-center justify-center rounded-full cursor-pointer hover:bg-black/5 transition"
+          @click="
+            () => {
+              router.back()
+            }
+          "
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -22,22 +35,23 @@ import APagination from '../components/APagination.vue'
           >
             <path
               fill=""
-              d="M16.175 13H5q-.425 0-.712-.288T4 12t.288-.712T5 11h11.175l-4.9-4.9q-.3-.3-.288-.7t.313-.7q.3-.275.7-.288t.7.288l6.6 6.6q.15.15.213.325t.062.375t-.062.375t-.213.325l-6.6 6.6q-.275.275-.687.275T11.3 19.3q-.3-.3-.3-.712t.3-.713z"
+              d="m12 13.4l-2.917 2.925q-.277.275-.704.275t-.704-.275q-.275-.275-.275-.7t.275-.7L10.6 12L7.675 9.108Q7.4 8.831 7.4 8.404t.275-.704q.275-.275.7-.275t.7.275L12 10.625L14.892 7.7q.277-.275.704-.275t.704.275q.3.3.3.713t-.3.687L13.375 12l2.925 2.917q.275.277.275.704t-.275.704q-.3.3-.712.3t-.688-.3z"
             />
           </svg>
         </div>
       </div>
       <div class="w-full grid grid-cols-1 lg:grid-cols-4 items-center justify-center gap-4">
-        <BookCard title="Sample Book" author="Author Name" category="Fiction" :locations="['Location 1']" status="Available" />
-        <BookCard title="Sample Book" author="Author Name" category="Fiction" :locations="['Location 1']" status="Available" />
-        <BookCard title="Sample Book" author="Author Name" category="Fiction" :locations="['Location 1']" status="Available" />
-        <BookCard title="Sample Book" author="Author Name" category="Fiction" :locations="['Location 1']" status="Available" />
-        <BookCard title="Sample Book" author="Author Name" category="Fiction" :locations="['Location 1']" status="Available" />
-        <BookCard title="Sample Book" author="Author Name" category="Fiction" :locations="['Location 1']" status="Available" />
-        <BookCard title="Sample Book" author="Author Name" category="Fiction" :locations="['Location 1']" status="Available" />
-        <BookCard title="Sample Book" author="Author Name" category="Fiction" :locations="['Location 1']" status="Available" />
+        <BookCard
+          v-for="book in library.books"
+          :key="book.id"
+          :title="book.title"
+          :author="book.author"
+          :category="book.category"
+          :locations="book.locations"
+          :status="book.status"
+        />
       </div>
-      <APagination :total-pages="100" />
+      <!-- <APagination :total-pages="100" /> -->
     </div>
   </div>
 </template>

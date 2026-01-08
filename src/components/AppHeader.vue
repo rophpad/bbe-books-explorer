@@ -13,7 +13,7 @@ const isCurrentPath = (path: string) => route.path === path
 
 <template>
   <header class="flex items-center justify-between gap-8 p-4 lg:px-16 bg-white relative">
-    <img src="/src/assets/images/b-logo.png" alt="" class="w-8" />
+    <RouterLink to="/"><img src="/src/assets/images/b-logo.png" alt="" class="w-8" /></RouterLink>
     <div class="hidden md:flex w-full items-center justify-between">
       <div class="flex gap-4">
         <!-- <span
