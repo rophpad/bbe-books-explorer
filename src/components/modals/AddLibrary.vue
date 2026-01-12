@@ -50,7 +50,7 @@
     </div>
 
     <p class="text-xs text-slate-500 dark:text-slate-400">
-      Vous pouvez aussi partager ce lien avec d'autres contributeurs.
+      Vous pouvez aussi partager le lien.
     </p>
   </div>
 </template>
